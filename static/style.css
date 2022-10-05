@@ -1,0 +1,10 @@
+.add-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    background-color: gray;
+    padding: 5px;
+}
+.add-form-item {
+    margin: 0 0 5px 0;
+}

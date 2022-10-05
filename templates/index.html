@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <title>Document</title>
+    
+</head>
+<body>
+    <form action="" id="adduser" class="add-form">
+        <input type="text" name="name" placeholder="Имя" class="add-form-item">
+        <input type="email" name="email" placeholder="Почта" class="add-form-item">
+        <input type="password" name="password" placeholder="Пароль" class="add-form-item">
+        <input type="text" name="age" placeholder="Возраст" class="add-form-item">
+        <select name="gender" id="gender">
+            <option>Муж.</option>
+            <option>Жен.</option>
+        </select>
+        <button type="submit">Добавить пользователя</button>
+    </form>
+    <div class="results"></div>
+    <!-- Скрипты -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#adduser").submit( function () {
+                $.ajax({
+                url: '/api/post/', // url where to submit the request
+                type : "POST", // type of action POST || GET
+                dataType : 'json', // data type
+                data : $("#adduser").serialize(), // post data || get data
+                success : function(result) {
+                    // you can see the result from the console
+                    // tab of the developer tools
+                    console.log(result);
+                },
+                error: function(xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                }
+            })
+              return false;
+            });
+        });
+</script>
+
+</body>
+</html>
